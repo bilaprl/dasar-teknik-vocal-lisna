@@ -259,7 +259,7 @@ export default function VocalApp() {
     <div className="flex flex-col min-h-screen">
       {/* Navbar (Visible after step 1) */}
       {step > 1 && (
-        <nav className="bg-white/80 backdrop-blur-md shadow-sm p-3 md:p-4 flex justify-between items-center sticky top-0 z-50 border-b border-slate-100">
+       <nav className="bg-white/80 backdrop-blur-md shadow-sm p-3 md:p-4 flex justify-between items-center sticky top-0 z-50 border-b border-slate-100 print:hidden">
           {/* Sisi Kiri: Logo & Nama */}
           <div className="flex items-center gap-1.5 md:gap-2">
             <div className="bg-blue-600 p-1.5 rounded-lg flex items-center justify-center shadow-lg shadow-blue-200">
