@@ -1159,25 +1159,49 @@ export default function VocalApp() {
                 </div>
 
                 {/* Keyboard Layout */}
-                <div className="lg:w-2/3 flex justify-center w-full overflow-x-auto py-4">
-                  <div className="flex bg-slate-800 p-5 rounded-3xl shadow-inner border border-slate-700">
-                    {NOTES.map((n, i) => (
-                      <button
-                        key={i}
-                        onClick={() => playNote(n.freq)}
-                        className="group relative w-12 md:w-16 h-48 md:h-64 bg-white border border-slate-300 rounded-b-2xl 
-                           hover:bg-blue-50 transition-all active:scale-95 active:translate-y-2
-                           shadow-[0_8px_0_#cbd5e1] active:shadow-none flex flex-col justify-end items-center pb-8
-                           first:rounded-l-2xl last:rounded-r-2xl"
-                      >
-                        <span className="text-xs font-black text-slate-300 group-hover:text-blue-600 transition-colors">
-                          {n.name}
-                        </span>
-                        <div className="absolute inset-0 bg-blue-400 opacity-0 group-active:opacity-20 transition-opacity rounded-b-2xl"></div>
-                      </button>
-                    ))}
-                  </div>
-                </div>
+               <div className="lg:w-2/3 w-full py-4">
+  {/* Container Pembungkus dengan Scroll Horizontal di Mobile */}
+  <div className="overflow-x-auto pb-6 custom-scrollbar">
+    {/* Piano Case: Gunakan min-w-max agar tuts tidak menciut paksa */}
+    <div className="flex bg-slate-800 p-3 md:p-5 rounded-[2rem] shadow-2xl border border-slate-700 min-w-max mx-auto w-fit">
+      {NOTES.map((n, i) => (
+        <button
+          key={i}
+          onClick={() => playNote(n.freq)}
+          className={`
+            group relative 
+            w-10 md:w-16             /* Lebar 40px di mobile, 64px di desktop */
+            h-40 md:h-64             /* Tinggi dikurangi sedikit untuk mobile */
+            bg-white border border-slate-200 
+            rounded-b-xl md:rounded-b-2xl 
+            hover:bg-blue-50 transition-all 
+            active:scale-95 active:translate-y-1
+            shadow-[0_6px_0_#cbd5e1] md:shadow-[0_8px_0_#cbd5e1] 
+            active:shadow-none flex flex-col justify-end items-center pb-6 md:pb-8
+            first:rounded-l-xl md:first:rounded-l-2xl 
+            last:rounded-r-xl md:last:rounded-r-2xl
+            mx-[1px]                /* Memberi jarak antar tuts */
+          `}
+        >
+          {/* Label Nada */}
+          <span className="text-[10px] md:text-xs font-black text-slate-400 group-hover:text-blue-600 transition-colors uppercase tracking-tighter">
+            {n.name}
+          </span>
+          
+          {/* Efek Cahaya saat ditekan */}
+          <div className="absolute inset-x-0 bottom-0 h-1 bg-blue-500 opacity-0 group-active:opacity-100 transition-opacity rounded-full mb-2 mx-2"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent opacity-0 group-active:opacity-100 transition-opacity rounded-b-xl"></div>
+        </button>
+      ))}
+    </div>
+  </div>
+  
+  {/* Indikator Geser (Hanya muncul di Mobile) */}
+  <p className="text-center text-slate-400 text-[10px] font-bold mt-2 md:hidden flex items-center justify-center gap-2">
+    <span className="material-icons text-sm">swap_horiz</span>
+    GESER PIANO UNTUK NADA LAIN
+  </p>
+</div>
               </div>
             </div>
 
