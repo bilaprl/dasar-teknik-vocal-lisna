@@ -427,7 +427,7 @@ export default function VocalApp() {
                         Butuh bantuan teknis?
                       </p>
                       <p className="text-[10px] md:text-xs text-blue-700">
-                        Email: lisna@gmail.com
+                        Email: AlifaR@gmail.com
                       </p>
                     </div>
                     <div className="p-4 bg-gray-50 rounded-2xl">
